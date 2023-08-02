@@ -1,4 +1,13 @@
 input.onButtonPressed(Button.A, function () {
+    basic.showLeds(`
+        . . # . .
+        . . # . .
+        . . # # #
+        . . # . .
+        # # # # #
+        `)
+    music.play(music.createSoundExpression(WaveShape.Sine, 500, 500, 255, 0, 2000, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
+    basic.pause(1000)
     终点()
     wuKong.stopAllMotor()
     掉头()
@@ -10,18 +19,53 @@ input.onButtonPressed(Button.A, function () {
 function 巡线 () {
     Trackbit.Trackbit_get_state_value()
     if (Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_1)) {
+        basic.showLeds(`
+            . . # . .
+            . # # # .
+            # . # . #
+            . . # . .
+            . . # . .
+            `)
         wuKong.setAllMotor(-40, 40)
     }
     if (Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_3) || Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_11)) {
+        basic.showLeds(`
+            . . # # #
+            . . . # #
+            . . # . #
+            . # . . .
+            # . . . .
+            `)
         wuKong.setAllMotor(10, 30)
     }
     if (Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_8)) {
+        basic.showLeds(`
+            . # # # #
+            . . . # #
+            . . # . #
+            . # . . #
+            # . . . .
+            `)
         wuKong.setAllMotor(10, 30)
     }
     if (Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_2) || Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_14)) {
+        basic.showLeds(`
+            # # # . .
+            # # . . .
+            # . # . .
+            . . . # .
+            . . . . #
+            `)
         wuKong.setAllMotor(30, 10)
     }
     if (Trackbit.TrackbitState(Trackbit.TrackbitStateType.Tracking_State_12)) {
+        basic.showLeds(`
+            # # # # .
+            # # . . .
+            # . # . .
+            # . . # .
+            . . . . #
+            `)
         wuKong.setAllMotor(30, 10)
     }
 }
@@ -58,3 +102,6 @@ basic.showLeds(`
     . # . # .
     # . . # .
     `)
+music.play(music.createSoundExpression(WaveShape.Square, 1600, 1, 255, 0, 2000, SoundExpressionEffect.None, InterpolationCurve.Curve), music.PlaybackMode.UntilDone)
+music.play(music.createSoundExpression(WaveShape.Square, 400, 600, 255, 0, 200, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+music.play(music.createSoundExpression(WaveShape.Square, 400, 600, 255, 0, 200, SoundExpressionEffect.Warble, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
